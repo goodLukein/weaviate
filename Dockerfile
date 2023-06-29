@@ -31,11 +31,3 @@ FROM build_base AS telemetry_mock_api
 COPY . .
 ENTRYPOINT ["./tools/dev/telemetry_mock_api.sh"]
 
-###############################################################################
-# Weaviate (no differentiation between dev/test/prod - 12 factor!)
-FROM alpine AS weaviate
-ENTRYPOINT ["/bin/weaviate"]
-COPY --from=server_builder /weaviate-server /bin/weaviate
-RUN apk add --no-cache --upgrade ca-certificates openssl
-RUN mkdir ./modules
-CMD [ "--host", "0.0.0.0", "--port", "8080", "--scheme", "http"]
