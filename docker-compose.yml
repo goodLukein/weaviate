@@ -18,5 +18,6 @@ services:
       DEFAULT_VECTORIZER_MODULE: 'none'
       CLUSTER_HOSTNAME: 'node1'
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      APIKey: 'aioewungpieaujngrpiuagneodfjfioufh'
     volumes:
       - /var/weaviate:/var/lib/weaviate
