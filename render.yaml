@@ -1,7 +1,9 @@
-version: '3.4'
 services:
-  weaviate:
-      command:
+  - type: pserv
+    name: weaviate
+    env: docker
+    autoDeploy: false
+    command:
       - --host
       - 0.0.0.0
       - --port
@@ -20,6 +22,7 @@ services:
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
     volumes:
       - /var/weaviate:/var/lib/weaviate
-    volumes:
-      - ./backups-azure:/data
-    command: "azurite --blobHost 0.0.0.0 --blobPort 10000"
+    disk:
+      name: data
+      mountPath: /data/db
+      sizeGB: 10
