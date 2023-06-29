@@ -23,6 +23,6 @@ services:
     volumes:
       - /var/weaviate:/var/lib/weaviate
     disk:
-      name: data
-      mountPath: /data/db
+      name: weaviate
+      mountPath: /var/lib/weaviate
       sizeGB: 10
